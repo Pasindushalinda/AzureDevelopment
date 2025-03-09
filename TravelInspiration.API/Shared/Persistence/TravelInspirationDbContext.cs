@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using TravelInspiration.API.Shared.Domain.Entities;
 namespace TravelInspiration.API.Shared.Persistence;
 
@@ -10,6 +11,12 @@ public sealed class TravelInspirationDbContext(
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Stop>()
+            .Property(s => s.ImageUri)
+            .HasConversion(
+                v => v != null ? v.ToString() : null,
+                v => v != null ? new Uri(v) : null);
+        
         modelBuilder.Entity<Itinerary>().HasData(
             new Itinerary("A Trip to Paris", "KevinsUserId")
             {
@@ -80,6 +87,15 @@ public sealed class TravelInspirationDbContext(
             typeof(TravelInspirationDbContext).Assembly);
         base.OnModelCreating(modelBuilder);
     }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder
+            .ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+    }
+
+    // ...existing code...
+
 
     public override async Task<int> SaveChangesAsync(
         CancellationToken cancellationToken = default)
