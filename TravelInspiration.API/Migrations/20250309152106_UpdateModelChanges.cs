@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TravelInspiration.API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class UpdateModelChanges : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -63,8 +63,8 @@ namespace TravelInspiration.API.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedOn", "Description", "LastModifiedBy", "LastModifiedOn", "Name", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "DATASEED", new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2576), "Five great days in Paris", null, null, "A Trip to Paris", "KevinsUserId" },
-                    { 2, "DATASEED", new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2579), "A week in beautiful Antwerp", null, null, "Antwerp Extravaganza", "KevinsUserId" }
+                    { 1, "DATASEED", new DateTime(2025, 3, 9, 15, 21, 5, 725, DateTimeKind.Utc).AddTicks(8560), "Five great days in Paris", null, null, "A Trip to Paris", "KevinsUserId" },
+                    { 2, "DATASEED", new DateTime(2025, 3, 9, 15, 21, 5, 725, DateTimeKind.Utc).AddTicks(8700), "A week in beautiful Antwerp", null, null, "Antwerp Extravaganza", "KevinsUserId" }
                 });
 
             migrationBuilder.InsertData(
@@ -72,12 +72,12 @@ namespace TravelInspiration.API.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedOn", "ImageUri", "ItineraryId", "LastModifiedBy", "LastModifiedOn", "Name" },
                 values: new object[,]
                 {
-                    { 1, "DATASEED", new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2838), "https://localhost:7120/images/eiffeltower.jpg", 1, null, null, "The Eiffel Tower" },
-                    { 2, "DATASEED", new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2844), "https://localhost:7120/images/louvre.jpg", 1, null, null, "The Louvre" },
-                    { 3, "DATASEED", new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2849), "https://localhost:7120/images/perelachaise.jpg", 1, null, null, "Père Lachaise Cemetery" },
-                    { 4, "DATASEED", new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2854), "https://localhost:7120/images/royalmuseum.jpg", 2, null, null, "The Royal Museum of Beautiful Arts" },
-                    { 5, "DATASEED", new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2858), "https://localhost:7120/images/stpauls.jpg", 2, null, null, "Saint Paul's Church" },
-                    { 6, "DATASEED", new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2863), "https://localhost:7120/images/michelin.jpg", 2, null, null, "Michelin Restaurant Visit" }
+                    { 1, "DATASEED", new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5340), "https://localhost:7120/images/eiffeltower.jpg", 1, null, null, "The Eiffel Tower" },
+                    { 2, "DATASEED", new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5440), "https://localhost:7120/images/louvre.jpg", 1, null, null, "The Louvre" },
+                    { 3, "DATASEED", new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5440), "https://localhost:7120/images/perelachaise.jpg", 1, null, null, "Père Lachaise Cemetery" },
+                    { 4, "DATASEED", new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5450), "https://localhost:7120/images/royalmuseum.jpg", 2, null, null, "The Royal Museum of Beautiful Arts" },
+                    { 5, "DATASEED", new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5470), "https://localhost:7120/images/stpauls.jpg", 2, null, null, "Saint Paul's Church" },
+                    { 6, "DATASEED", new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5470), "https://localhost:7120/images/michelin.jpg", 2, null, null, "Michelin Restaurant Visit" }
                 });
 
             migrationBuilder.CreateIndex(

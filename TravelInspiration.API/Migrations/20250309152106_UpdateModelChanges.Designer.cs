@@ -12,15 +12,15 @@ using TravelInspiration.API.Shared.Persistence;
 namespace TravelInspiration.API.Migrations
 {
     [DbContext(typeof(TravelInspirationDbContext))]
-    [Migration("20240704135146_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250309152106_UpdateModelChanges")]
+    partial class UpdateModelChanges
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -69,7 +69,7 @@ namespace TravelInspiration.API.Migrations
                         {
                             Id = 1,
                             CreatedBy = "DATASEED",
-                            CreatedOn = new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2576),
+                            CreatedOn = new DateTime(2025, 3, 9, 15, 21, 5, 725, DateTimeKind.Utc).AddTicks(8560),
                             Description = "Five great days in Paris",
                             Name = "A Trip to Paris",
                             UserId = "KevinsUserId"
@@ -78,7 +78,7 @@ namespace TravelInspiration.API.Migrations
                         {
                             Id = 2,
                             CreatedBy = "DATASEED",
-                            CreatedOn = new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2579),
+                            CreatedOn = new DateTime(2025, 3, 9, 15, 21, 5, 725, DateTimeKind.Utc).AddTicks(8700),
                             Description = "A week in beautiful Antwerp",
                             Name = "Antwerp Extravaganza",
                             UserId = "KevinsUserId"
@@ -133,7 +133,7 @@ namespace TravelInspiration.API.Migrations
                         {
                             Id = 1,
                             CreatedBy = "DATASEED",
-                            CreatedOn = new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2838),
+                            CreatedOn = new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5340),
                             ImageUri = "https://localhost:7120/images/eiffeltower.jpg",
                             ItineraryId = 1,
                             Name = "The Eiffel Tower"
@@ -142,7 +142,7 @@ namespace TravelInspiration.API.Migrations
                         {
                             Id = 2,
                             CreatedBy = "DATASEED",
-                            CreatedOn = new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2844),
+                            CreatedOn = new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5440),
                             ImageUri = "https://localhost:7120/images/louvre.jpg",
                             ItineraryId = 1,
                             Name = "The Louvre"
@@ -151,7 +151,7 @@ namespace TravelInspiration.API.Migrations
                         {
                             Id = 3,
                             CreatedBy = "DATASEED",
-                            CreatedOn = new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2849),
+                            CreatedOn = new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5440),
                             ImageUri = "https://localhost:7120/images/perelachaise.jpg",
                             ItineraryId = 1,
                             Name = "Père Lachaise Cemetery"
@@ -160,7 +160,7 @@ namespace TravelInspiration.API.Migrations
                         {
                             Id = 4,
                             CreatedBy = "DATASEED",
-                            CreatedOn = new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2854),
+                            CreatedOn = new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5450),
                             ImageUri = "https://localhost:7120/images/royalmuseum.jpg",
                             ItineraryId = 2,
                             Name = "The Royal Museum of Beautiful Arts"
@@ -169,7 +169,7 @@ namespace TravelInspiration.API.Migrations
                         {
                             Id = 5,
                             CreatedBy = "DATASEED",
-                            CreatedOn = new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2858),
+                            CreatedOn = new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5470),
                             ImageUri = "https://localhost:7120/images/stpauls.jpg",
                             ItineraryId = 2,
                             Name = "Saint Paul's Church"
@@ -178,7 +178,7 @@ namespace TravelInspiration.API.Migrations
                         {
                             Id = 6,
                             CreatedBy = "DATASEED",
-                            CreatedOn = new DateTime(2024, 7, 4, 13, 51, 46, 455, DateTimeKind.Utc).AddTicks(2863),
+                            CreatedOn = new DateTime(2025, 3, 9, 15, 21, 5, 726, DateTimeKind.Utc).AddTicks(5470),
                             ImageUri = "https://localhost:7120/images/michelin.jpg",
                             ItineraryId = 2,
                             Name = "Michelin Restaurant Visit"
