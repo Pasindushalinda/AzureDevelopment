@@ -1,4 +1,10 @@
-@HostAddressRoot = https://localhost:7293
+#@HostAddressRoot = https://localhost:7293
+
+ @HostAddressRoot = http://localhost:7194
+
+# @HostAddressRoot = https://appdev-app-dev-we-travelinspiration.azurewebsites.net
+
+# @HostAddressRoot = https://appdev-func-dev-we-travelinspirationitineraries.azurewebsites.net
 
 GET {{HostAddressRoot}}/api/destinations?searchFor=San
 Accept: application/json
@@ -16,21 +22,25 @@ PUT {{HostAddressRoot}}/api/destinations/1/images
 Accept: application/json
 Content-Type: application/json
 
- { 
-   "ImagesToUpdate": [ 
+{
+  "ImagesToUpdate": [
     {
-      "Name": "antwerp2.jpg",
+      "Name": "antwerp.jpg",
       "ImageBytes": "base64string"
-    }, 
+    },
     {
       "Name": "antwerp3.jpg",
       "ImageBytes": "base64string"
     }]
- }
+}
 
 ###
 GET {{HostAddressRoot}}/api/processdestinationimagechanges
-Accept: application/json 
+Accept: application/json
+
+###
+GET {{HostAddressRoot}}/api/itineraries
+Accept: application/json
 
 ###
 GET {{HostAddressRoot}}/api/itineraries?searchFor=Paris
@@ -38,16 +48,35 @@ Accept: application/json
 
 ###
 GET {{HostAddressRoot}}/api/itineraries/1/stops
-Accept: application/json 
- 
-###
-GET https://appdevstsatravel.table.core.windows.net/Destination?sp=r&st=2025-02-12T04:54:59Z&se=2025-02-13T04:54:59Z&spr=https&sv=2022-11-02&sig=nlYxe2CnJ8eskG8wnsz3V9uVWdncWZ33lczCfGGBs94%3D&tn=Destination
-Accept: application/json 
+Accept: application/json
 
 ###
-GET https://appdevstsatravel.table.core.windows.net/Destination?$filter=(Identifier%20ge%202)&sp=r&st=2025-02-12T04:54:59Z&se=2025-02-13T04:54:59Z&spr=https&sv=2022-11-02&sig=nlYxe2CnJ8eskG8wnsz3V9uVWdncWZ33lczCfGGBs94%3D&tn=Destination
-Accept: application/json 
+
+GET https://appdevstdevwetravel.table.core.windows.net/Destinations?sp=r&st=2024-09-20T12:14:20Z&se=2024-09-21T12:14:20Z&spr=https&sv=2022-11-02&sig=r9Z434fU4txUOBjbsZV9r7i2d6N07esdppkEA0hjdrk%3D&tn=Destinations
+Accept: application/json
+
+### 
+GET https://appdevstdevwetravel.table.core.windows.net/Destinations?$filter=(Identifier%20ge%202)&sp=r&st=2024-09-20T12:14:20Z&se=2024-09-21T12:14:20Z&spr=https&sv=2022-11-02&sig=r9Z434fU4txUOBjbsZV9r7i2d6N07esdppkEA0hjdrk%3D&tn=Destinations
+Accept: application/json
+
+### 
+GET https://appdevstdevwetravel.table.core.windows.net/Destinations?$filter=(Identifier%20ge%202)&$select=Identifier,Name&sp=r&st=2024-09-20T12:14:20Z&se=2024-09-21T12:14:20Z&spr=https&sv=2022-11-02&sig=r9Z434fU4txUOBjbsZV9r7i2d6N07esdppkEA0hjdrk%3D&tn=Destinations
+Accept: application/json
 
 ###
-GET https://appdevstsatravel.table.core.windows.net/Destination?$filter=(Identifier%20ge%202)&$select=Identifier,Name&sp=r&st=2025-02-12T04:54:59Z&se=2025-02-13T04:54:59Z&spr=https&sv=2022-11-02&sig=nlYxe2CnJ8eskG8wnsz3V9uVWdncWZ33lczCfGGBs94%3D&tn=Destination
-Accept: application/json 
+GET https://appdev-func-dev-we-travelinspirationitineraries.azurewebsites.net/api/swagger.json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1jN2wzSXo5M2c3dXdnTmVFbW13X1dZR1BrbyIsImtpZCI6Ik1jN2wzSXo5M2c3dXdnTmVFbW13X1dZR1BrbyJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvNWMxNTRhN2UtMGMxMy00ZjkyLTg1MzEtZTNmNGQ4ZmJlYWU5LyIsImlhdCI6MTcyNzQ0NTc1MSwibmJmIjoxNzI3NDQ1NzUxLCJleHAiOjE3Mjc0NTEzMjYsImFjciI6IjEiLCJhaW8iOiJBWVFBZS84WEFBQUFzQjN3Slh1K1lVRndmeXpKZGp6cS9MckRyUDFOd0FaU3dRNGcrd0QvREdnaUM2dnM1bTY3MTZSRGo0enpyVWFPcHRjUlg0RGNYZzQ4RzNLb1k2aE1vM2FjRGcrczd6bmVrZC9Td3dnU3NvUFpUaGx2RXZmT2diKzVIV0dxVzFzaFRjc3lOTVpObFBybTBzNnpKcjNIc1Nyb1BkdG5lbGppY3JVQkRoVGtuT2M9IiwiYWx0c2VjaWQiOiIxOmxpdmUuY29tOjAwMDNCRkZEOTZGRkEzMzMiLCJhbXIiOlsicHdkIiwibWZhIl0sImFwcGlkIjoiMDRiMDc3OTUtOGRkYi00NjFhLWJiZWUtMDJmOWUxYmY3YjQ2IiwiYXBwaWRhY3IiOiIwIiwiZW1haWwiOiJrZXZpbi5kb2NreEBnbWFpbC5jb20iLCJmYW1pbHlfbmFtZSI6IkRvY2t4IiwiZ2l2ZW5fbmFtZSI6IktldmluIiwiZ3JvdXBzIjpbImI3NTg3YjdkLWFiNTgtNDFkNC05ZWY2LTk4YjUyNGUxYWRhZSJdLCJpZHAiOiJsaXZlLmNvbSIsImlkdHlwIjoidXNlciIsImlwYWRkciI6IjgxLjI0Ni4xNzcuMjI3IiwibmFtZSI6IktldmluIERvY2t4Iiwib2lkIjoiYjJmZjY0MWMtNWM3Ni00NDY5LTljMjgtMzVmNWU3YzUxY2UxIiwicHVpZCI6IjEwMDMzRkZGODc2QzBDNTkiLCJyaCI6IjAuQVFrQWZrb1ZYQk1Na2stRk1lUDAyUHZxNlVaSWYza0F1dGRQdWtQYXdmajJNQlBlQU80LiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6ImxzaHRoMndzTmRXckdxLVFsTzhzVXU3QjJtOV9WLTZMYk5xb3ZONUY4eEEiLCJ0aWQiOiI1YzE1NGE3ZS0wYzEzLTRmOTItODUzMS1lM2Y0ZDhmYmVhZTkiLCJ1bmlxdWVfbmFtZSI6ImxpdmUuY29tI2tldmluLmRvY2t4QGdtYWlsLmNvbSIsInV0aSI6IlBNQzNkdl9Nc1UyNk5YTHlGR3hwQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbIjYyZTkwMzk0LTY5ZjUtNDIzNy05MTkwLTAxMjE3NzE0NWUxMCIsImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdLCJ4bXNfY2FlIjoiMSIsInhtc19jYyI6WyJDUDEiXSwieG1zX2Vkb3YiOnRydWUsInhtc19pZHJlbCI6IjEgMzAiLCJ4bXNfdGNkdCI6MTM4MTY4MDQzNX0.Z1JntD3GT6CvwMZE-IvQLeFJWYwcaWxe8q0xzxDogSsU6NE3OgtxwtWO2FZ4kOfH96zLiRzXv4j04fscrNfGVE0P5gGqt1k_29ct5QVjCTts9QUHXCXh15wddea8S-y8ZBo6L5VIojQ2iPuLzUhpngUhU3J1IQQ25cKB077gLa1JbPAC6kqCtWbAoXLWZjAfx5LcYYa-FBVcK1Hybt8Lp5VmgNTtRFt9s4Xj45ZZzFIpC0VWLNT0Bv5Ww1KhHu1mHXERa1U-mTr4HvvU0uocaWs_keAflSho2IO8MzRlBeOyQepcH-eZL8iJ9h2jdzP45ovXCE9_6xhqKluq_gs54g
+
+### 
+GET https://appdev-apim-dev-we.azure-api.net/travel-inspiration-app-service/destinations
+Accept: application/json
+Ocp-Apim-Subscription-Key: fdd99c00c7654dc39a36ba26bfdc22ac
+
+
+### 
+GET https://appdev-apim-dev-we.azure-api.net/travel-inspiration-function-app/itineraries
+Accept: application/json
+Ocp-Apim-Subscription-Key: fdd99c00c7654dc39a36ba26bfdc22ac
+Ocp-Apim-Trace: true
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1jN2wzSXo5M2c3dXdnTmVFbW13X1dZR1BrbyIsImtpZCI6Ik1jN2wzSXo5M2c3dXdnTmVFbW13X1dZR1BrbyJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvNWMxNTRhN2UtMGMxMy00ZjkyLTg1MzEtZTNmNGQ4ZmJlYWU5LyIsImlhdCI6MTcyNzY4NTc4MywibmJmIjoxNzI3Njg1NzgzLCJleHAiOjE3Mjc2OTExNzAsImFjciI6IjEiLCJhaW8iOiJBWVFBZS84WUFBQUFUNEVHaERjNW9YSHlFUmJYRHhlOENFZFJNaG50V2RjbXQzdWxaSExVZ0cwV2FmaC83VytGbFY3aEFGelZmWWVUYXkrSGp4anJCcGsxUzN6dS9BOGkvK2NabG5XTTRxVWJFM3ZJVVJYYjJ1NUUzRU81amJwam5yUi9ldTR0ZnIxMUxoOWNHWWNYSVFrTnQ0RThJN1lCaXoyWTJuQ0UrZkhXcWZOeGcvN0N5WTA9IiwiYWx0c2VjaWQiOiIxOmxpdmUuY29tOjAwMDNCRkZEOTZGRkEzMzMiLCJhbXIiOlsicHdkIiwibWZhIl0sImFwcGlkIjoiMDRiMDc3OTUtOGRkYi00NjFhLWJiZWUtMDJmOWUxYmY3YjQ2IiwiYXBwaWRhY3IiOiIwIiwiZW1haWwiOiJrZXZpbi5kb2NreEBnbWFpbC5jb20iLCJmYW1pbHlfbmFtZSI6IkRvY2t4IiwiZ2l2ZW5fbmFtZSI6IktldmluIiwiZ3JvdXBzIjpbImI3NTg3YjdkLWFiNTgtNDFkNC05ZWY2LTk4YjUyNGUxYWRhZSJdLCJpZHAiOiJsaXZlLmNvbSIsImlkdHlwIjoidXNlciIsImlwYWRkciI6IjgxLjI0Ni4xNzcuMjI3IiwibmFtZSI6IktldmluIERvY2t4Iiwib2lkIjoiYjJmZjY0MWMtNWM3Ni00NDY5LTljMjgtMzVmNWU3YzUxY2UxIiwicHVpZCI6IjEwMDMzRkZGODc2QzBDNTkiLCJyaCI6IjAuQVFrQWZrb1ZYQk1Na2stRk1lUDAyUHZxNlVaSWYza0F1dGRQdWtQYXdmajJNQlBlQU80LiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6ImxzaHRoMndzTmRXckdxLVFsTzhzVXU3QjJtOV9WLTZMYk5xb3ZONUY4eEEiLCJ0aWQiOiI1YzE1NGE3ZS0wYzEzLTRmOTItODUzMS1lM2Y0ZDhmYmVhZTkiLCJ1bmlxdWVfbmFtZSI6ImxpdmUuY29tI2tldmluLmRvY2t4QGdtYWlsLmNvbSIsInV0aSI6IlJlUUpaNWhwWDBhMW5DRXBJSkFCQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbIjYyZTkwMzk0LTY5ZjUtNDIzNy05MTkwLTAxMjE3NzE0NWUxMCIsImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdLCJ4bXNfY2FlIjoiMSIsInhtc19jYyI6WyJDUDEiXSwieG1zX2Vkb3YiOnRydWUsInhtc19pZHJlbCI6IjEgMTQiLCJ4bXNfdGNkdCI6MTM4MTY4MDQzNX0.wG_uUzQdvz8mqQ5sIaxC4-IbadA90rsro-DylyJPDkwdkb7_UyYQGnmZm26DDDNWatXnsY9C5FS7n7bKvTTkhG-sR9ejaSBfksRJLdQGh43kAKAgPKHtSDq3-l2NSy3UTJ8Go_7QUxTeEZlXZN66ssLhgxA6gJ8pUS8vtkvmlkfBSuFDEUMpi76VRWAIlZYU26SvdolP086qJgU2l-ZWVU89A_tVTBcLGiyXRvYYVMLkwHOcqTSrftT6EGmDu796gIh1NmpNJM4QCL0e7nMHARiRgzXY6kNEjS9l62BzsHTgCqqW2hUQxRV1Ljx_k8g03aNeL06WYQOI8nvAzdVByg
