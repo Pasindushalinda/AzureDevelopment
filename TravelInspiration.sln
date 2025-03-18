@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelInspiration.API", "TravelInspiration.API\TravelInspiration.API.csproj", "{5594BA9E-09DB-4B71-8AD1-00B5AC862E90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelInspiration.API.Itineraries", "TravelInspiration.API.Itineraries\TravelInspiration.API.Itineraries.csproj", "{46022331-0ADE-4FDE-A26B-0A91A4F1E119}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5594BA9E-09DB-4B71-8AD1-00B5AC862E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5594BA9E-09DB-4B71-8AD1-00B5AC862E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5594BA9E-09DB-4B71-8AD1-00B5AC862E90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46022331-0ADE-4FDE-A26B-0A91A4F1E119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46022331-0ADE-4FDE-A26B-0A91A4F1E119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46022331-0ADE-4FDE-A26B-0A91A4F1E119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46022331-0ADE-4FDE-A26B-0A91A4F1E119}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
