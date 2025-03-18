@@ -1,34 +1,27 @@
-using Microsoft.Azure.Functions.Worker;
-using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Extensions.Sql;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using TravelInspiration.API.Itineraries.DbContexts;
 using TravelInspiration.API.Itineraries.Model;
-using Microsoft.Extensions.Configuration;
 
 namespace TravelInspiration.API.Itineraries;
 
-public class GetItinerariesFunction
+public class GetItinerariesFunction(ILogger<GetItinerariesFunction> logger,
+    TravelInspirationDbContext dbContext,
+    IConfiguration configuration)
 {
-    private readonly ILogger<GetItinerariesFunction> _logger;
-    private readonly TravelInspirationDbContext _dbContext;
-    private readonly IConfiguration _configuration;
-
-    public GetItinerariesFunction(ILogger<GetItinerariesFunction> logger, 
-        TravelInspirationDbContext dbContext,
-        IConfiguration configuration)
-    {
-        _logger = logger;
-        _dbContext = dbContext;
-        _configuration = configuration;
-    }
+    private readonly ILogger<GetItinerariesFunction> _logger = logger;
+    private readonly TravelInspirationDbContext _dbContext = dbContext;
+    private readonly IConfiguration _configuration = configuration;
 
     [Function("GetItinerariesFunction")]
     public async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "itineraries")]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "itineraries")] 
         HttpRequest req)
-
     {
         string? searchForValue = req.Query["SearchFor"];
 
@@ -38,11 +31,12 @@ public class GetItinerariesFunction
             throw new Exception("MaximumAmountOfItinerariesToReturn setting is missing or its value is not a valid integer.");
         }
 
+
         var itineraryEntities = await _dbContext.Itineraries
-            .Where(i =>
-                searchForValue == null ||
-                i.Name.Contains(searchForValue) ||
-                (i.Description != null && i.Description.Contains(searchForValue)))
+            .Where(i => searchForValue == null ||
+                           i.Name.Contains(searchForValue) ||
+                           (i.Description != null && i.Description.Contains(searchForValue)))
+            .OrderBy(i => i.Name)
             .Take(maximumAmountOfItinerariesToReturn)
             .ToListAsync();
 
@@ -53,6 +47,7 @@ public class GetItinerariesFunction
             Name = i.Name,
             UserId = i.UserId
         });
+
 
         return new OkObjectResult(itineraryDtos);
     }

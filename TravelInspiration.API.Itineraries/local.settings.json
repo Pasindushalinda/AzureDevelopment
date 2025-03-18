@@ -3,10 +3,11 @@
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
-    "MaximumAmountOfItinerariesToReturn": 1
+    "MaximumAmountOfItinerariesToReturn": 1,
+    "CreateMostViewedItinerariesFunctionKey": "_TC3JvixqM2sqpcxgEFnzYU3Dv96SRNMbfHC2htxnP37AzFuvf-03g==",
+    "GetItinerariesFunctionKey": "OnlAJqoqcb2RbkUhb7YAmc_q459IPXWF-LvckdXp6FGUAzFu-4dQpQ=="
   },
   "ConnectionStrings": {
-    "TravelInspirationDbConnection": "Server=tcp:appdev-sql-dev-sa-travelingpr.database.windows.net,1433;Initial Catalog=appdev-sqldb-dev-sa-travelingpr;Persist Security Info=False;User ID=pasindu;Password=#compaq123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-  },
-  "MaximumAmountOfItinerariesToReturn": "2"
+    "TravelInspirationDbConnection": "Data Source=appdev-sql-dev-sa-travelingpr.database.windows.net,1433;Initial Catalog=appdev-sqldb-dev-sa-travelingpr;Persist Security Info=False;User ID=pasindu;Password=#compaq123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  }
 }

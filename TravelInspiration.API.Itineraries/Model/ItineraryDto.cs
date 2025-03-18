@@ -1,4 +1,4 @@
-namespace TravelInspiration.API.Itineraries.Model;
+﻿namespace TravelInspiration.API.Itineraries.Model;
 
 public sealed class ItineraryDto
 {
